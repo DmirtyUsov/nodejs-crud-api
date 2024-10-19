@@ -9,7 +9,7 @@ const config = {
   mode: 'production',
   target: 'node',
   output: {
-    filename: 'index.js',
+    filename: 'index.cjs',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
