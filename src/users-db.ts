@@ -36,12 +36,12 @@ class UsersDB {
     return { ...newUser };
   }
 
-  delete(id: string): UsersDBAnswer {
+  delete(userId: string): UsersDBAnswer {
     let deletedUser: UsersDBAnswer = null;
 
-    if (this.users[id]) {
-      deletedUser = { ...this.users[id] };
-      delete this.users[id];
+    if (this.users[userId]) {
+      deletedUser = { ...this.users[userId], id: undefined };
+      delete this.users[userId];
     }
 
     return deletedUser;
@@ -58,11 +58,11 @@ class UsersDB {
     return updateUser;
   }
 
-  get(id: string): UsersDBAnswer {
+  get(userId: string): UsersDBAnswer {
     let user: UsersDBAnswer = null;
 
-    if (this.users[id]) {
-      user = { ...this.users[id] };
+    if (this.users[userId]) {
+      user = { ...this.users[userId] };
     }
 
     return user;
