@@ -4,7 +4,7 @@
 
 RS School Task. Nodejs simple CRUD API
 
-## To run app:
+## Installation:
 
 `git clone git@github.com:DmirtyUsov/nodejs-crud-api.git`
 
@@ -13,6 +13,9 @@ RS School Task. Nodejs simple CRUD API
 `git switch dev`
 
 `npm install`
+
+## Configuration
+Create `.env` and specify the `PORT` you want the server to run on. You can use `.env.sample` as reference. If environment variable is missing, server will use default port 4000.
 
 ## Scripts:
 
