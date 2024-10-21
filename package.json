@@ -10,7 +10,7 @@
     "start:dev": "nodemon --exec node --loader ts-node/esm src/index.ts",
     "start:prod": "webpack && node dist/index.cjs",
     "lint": "eslint",
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "repository": {
     "type": "git",
