@@ -5,7 +5,7 @@ export type UsersDBAnswer = User | null | User[];
 
 type Users = { [id: string]: User };
 
-const initUsers: User[] = [
+export const initUsers: User[] = [
   {
     username: 'John Dow',
     age: 30,
@@ -75,4 +75,4 @@ class UsersDB {
   }
 }
 
-export const usersDB = new UsersDB(initUsers);
+export const usersDB = new UsersDB([]);

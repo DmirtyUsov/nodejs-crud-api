@@ -9,6 +9,7 @@
     "build": "webpack",
     "start:dev": "nodemon --exec node --loader ts-node/esm src/index.ts",
     "start:prod": "webpack && node dist/index.cjs",
+    "start:multi": "node --loader ts-node/esm src/index.ts --multi",
     "lint": "eslint",
     "test": "jest --verbose"
   },
@@ -49,6 +50,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
     "uuid": "^10.0.0"
   }
 }

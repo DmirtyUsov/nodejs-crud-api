@@ -20,13 +20,13 @@ let endpointWithNewUser: string;
 const testServer = startServer().listen(SERVER_PORT);
 
 describe('Server Test. Scenario I: basic operations', () => {
-  test('1.The first API call should return an empty array of (to del 2) users', async () => {
+  test('1.The first API call should return an empty array of users', async () => {
     const response = await supertest(testServer)
       .get(ENDPOINT)
       .set('Accept', 'application/json');
 
     expect(response.status).toEqual(Code.OK_200);
-    expect(response.body).toHaveLength(2);
+    expect(response.body).toHaveLength(0);
   });
 
   test('2. Should create a new user', async () => {
