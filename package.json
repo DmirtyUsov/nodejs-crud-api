@@ -41,5 +41,8 @@
   "bugs": {
     "url": "https://github.com/DmirtyUsov/nodejs-crud-api/issues"
   },
-  "homepage": "https://github.com/DmirtyUsov/nodejs-crud-api#readme"
+  "homepage": "https://github.com/DmirtyUsov/nodejs-crud-api#readme",
+  "dependencies": {
+    "uuid": "^11.1.0"
+  }
 }
