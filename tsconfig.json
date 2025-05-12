@@ -4,5 +4,8 @@
     "noImplicitAny": true,
     "module": "NodeNext",
     "target": "ES6",
+    "sourceMap": true,
+    "isolatedModules": true,
+    "esModuleInterop": true
   },
 }
