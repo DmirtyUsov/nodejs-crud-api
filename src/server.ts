@@ -29,14 +29,14 @@ const listener = async (
     }
     case HttpMethod.POST: {
       const bodyStr = await getRequestBody(req);
-      const response = MethodHandlers.post(urlState, bodyStr);
-      writeResponse(res, response);
+      const appResponse = MethodHandlers.post(urlState, bodyStr);
+      writeResponse(res, appResponse);
       break;
     }
     case HttpMethod.PUT: {
       const bodyStr = await getRequestBody(req);
-      const response = MethodHandlers.put(urlState, bodyStr);
-      writeResponse(res, response);
+      const appResponse = MethodHandlers.put(urlState, bodyStr);
+      writeResponse(res, appResponse);
       break;
     }
     default: {
