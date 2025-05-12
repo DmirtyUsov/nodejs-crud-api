@@ -3,7 +3,7 @@ import { StatusCode } from './models/status-code.model.js';
 import { validateUrl } from './validate-url.fn.js';
 import { AppResponse } from './models/app-response.model.js';
 import { HttpMethod } from './models/http-method.model.js';
-import * as MethodHandlers from './method-handlers.js';
+import * as MethodHandlers from './method-handlers/index.js';
 
 export const startServer = (): http.Server => {
   return http.createServer(listener);
@@ -19,6 +19,11 @@ const listener = async (
   switch (method) {
     case HttpMethod.GET: {
       const appResponse = MethodHandlers.get(urlState);
+      writeResponse(res, appResponse);
+      break;
+    }
+    case HttpMethod.DELETE: {
+      const appResponse = MethodHandlers.del(urlState);
       writeResponse(res, appResponse);
       break;
     }
