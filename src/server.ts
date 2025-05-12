@@ -27,6 +27,18 @@ const listener = async (
       writeResponse(res, appResponse);
       break;
     }
+    case HttpMethod.POST: {
+      const bodyStr = await getRequestBody(req);
+      const response = MethodHandlers.post(urlState, bodyStr);
+      writeResponse(res, response);
+      break;
+    }
+    case HttpMethod.PUT: {
+      const bodyStr = await getRequestBody(req);
+      const response = MethodHandlers.put(urlState, bodyStr);
+      writeResponse(res, response);
+      break;
+    }
     default: {
       writeResponse(res, {
         statusCode: StatusCode.NotFound_404,
@@ -52,4 +64,22 @@ const writeResponse = (
     res.write(JSON.stringify(appResponse.data));
   }
   res.end();
+};
+
+const getRequestBody = async (req: http.IncomingMessage): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const body: Buffer[] = [];
+
+    req.on('data', (chunk: Buffer) => {
+      body.push(chunk);
+    });
+
+    req.on('end', () => {
+      resolve(Buffer.concat(body).toString());
+    });
+
+    req.on('error', (err) => {
+      reject(err);
+    });
+  });
 };

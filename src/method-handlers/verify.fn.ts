@@ -14,3 +14,17 @@ export const verifyNotValidUserResponse = (
   const { userId, isUserIdValid } = urlState;
   return userId && !isUserIdValid ? ResponseTemplates.InvalidUUIDError : null;
 };
+
+export const verifyNotValidResponse = (urlState: UrlState): AppResponse => {
+  const notValidUrl = verifyNotValidUrlResponse(urlState);
+  if (notValidUrl) {
+    return notValidUrl;
+  }
+
+  const notValidUser = verifyNotValidUserResponse(urlState);
+  if (notValidUser) {
+    return notValidUser;
+  }
+
+  return null;
+};

@@ -4,26 +4,22 @@ import { UrlState } from '../models/url-state.model.js';
 import { usersDB } from '../users-db.js';
 import * as ResponseTemplates from '../response-templates.js';
 
-import {
-  verifyNotValidUrlResponse,
-  verifyNotValidUserResponse,
-} from './verify.fn.js';
+import { verifyNotValidResponse } from './verify.fn.js';
 
 export const del = (urlState: UrlState): AppResponse => {
-  const notValidUrl = verifyNotValidUrlResponse(urlState);
-  if (notValidUrl) {
-    return notValidUrl;
-  }
-
-  const notValidUser = verifyNotValidUserResponse(urlState);
-  if (notValidUser) {
-    return notValidUser;
+  const notValid = verifyNotValidResponse(urlState);
+  if (notValid) {
+    return notValid;
   }
 
   if (urlState.userId) {
     const user = usersDB.delete(urlState.userId);
     if (user) {
-      return { statusCode: StatusCode.NoContent_204, data: user };
+      const appResponse: AppResponse = {
+        statusCode: StatusCode.OK_200,
+        data: user,
+      };
+      return appResponse;
     }
     return ResponseTemplates.UserNotFound;
   }
